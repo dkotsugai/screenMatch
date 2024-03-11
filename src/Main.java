@@ -6,16 +6,14 @@ public class Main {
         meuFilme.nome = "O Poderoso Chefão";
         meuFilme.anoDeLancamento = 1972;
         meuFilme.incluidoNoPlano = true;
-        meuFilme.avaliacao = 9.2;
-        meuFilme.totalDeAvaliacoes = 100;
-        meuFilme.duracaoEmMinutos = 175;
-        System.out.println("Nome: " + meuFilme.nome);
-        System.out.println("Ano de lançamento: " + meuFilme.anoDeLancamento);
-        System.out.println("Incluído no plano: " + meuFilme.incluidoNoPlano);
-        System.out.println("Avaliação: " + meuFilme.avaliacao);
-        System.out.println("Total de avaliações: " + meuFilme.totalDeAvaliacoes);
-        System.out.println("Duração em minutos: " + meuFilme.duracaoEmMinutos);
 
 
+        meuFilme.exibeFichaTecnica();
+        meuFilme.avalia(5);
+        meuFilme.avalia(4);
+        meuFilme.avalia(5);
+        System.out.println(meuFilme.somaDasAvaliacoes);
+        System.out.println(meuFilme.totalDeAvaliacoes);
+        System.out.println(meuFilme.pegaMedia());
     }
 }
