@@ -1,19 +1,57 @@
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
+import br.com.alura.screenmatch.modelos.Episodio;
+import br.com.alura.screenmatch.modelos.Movie;
+import br.com.alura.screenmatch.modelos.Serie;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Movie meuFilme = new Movie();
-        meuFilme.nome = "O Poderoso Chefão";
-        meuFilme.anoDeLancamento = 1972;
-        meuFilme.incluidoNoPlano = true;
+            Movie meuFilme;
+            meuFilme = new Movie();
+            meuFilme.setNome("O poderoso chefão");
+            meuFilme.setAnoDeLancamento(1970);
+            meuFilme.setDuracaoEmMinutos(180);
+            System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
+            meuFilme.exibeFichaTecnica();
+            meuFilme.avalia(8);
+            meuFilme.avalia(5);
+            meuFilme.avalia(10);
+            System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
+            System.out.println(meuFilme.pegaMedia());
+            //meuFilme.somaDasAvaliacoes = 10;
+            //meuFilme.totalDeAvaliacoes = 1;
+            //System.out.println(meuFilme.pegaMedia());
 
-        meuFilme.exibeFichaTecnica();
-        meuFilme.avalia(5);
-        meuFilme.avalia(4);
-        meuFilme.avalia(5);
-        System.out.println(meuFilme.somaDasAvaliacoes);
-        System.out.println(meuFilme.totalDeAvaliacoes);
-        System.out.println(meuFilme.pegaMedia());
+            Serie lost = new Serie();
+            lost.setNome("Lost");
+            lost.setAnoDeLancamento(2000);
+            lost.exibeFichaTecnica();
+            lost.setTemporadas(10);
+            lost.setEpisodiosPorTemporada(10);
+            lost.setMinutosPorEpisodio(50);
+            System.out.println("Duração para maratonar Lost: " + lost.getDuracaoEmMinutos());
+
+            Movie outroFilme = new Movie();
+            outroFilme.setNome("Avatar");
+            outroFilme.setAnoDeLancamento(2023);
+            outroFilme.setDuracaoEmMinutos(200);
+
+            CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+            calculadora.inclui(meuFilme);
+            calculadora.inclui(outroFilme);
+            calculadora.inclui(lost);
+            System.out.println(calculadora.getTempoTotal());
+
+            FiltroRecomendacao filtro = new FiltroRecomendacao();
+            filtro.filtra(meuFilme);
+
+            Episodio episodio = new Episodio();
+            episodio.setNumero(1);
+            episodio.setSerie(lost);
+            episodio.setTotalVisualizacoes(300);
+            filtro.filtra(episodio);
+        }
     }
-}
